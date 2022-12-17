@@ -1,0 +1,14 @@
+[
+  {
+    "nombre": "Camibuso",
+    "precio": 75,
+    "thubnail": "Camibuso.png",
+    "id": 1
+  },
+  {
+    "nombre": "Pantalon",
+    "precio": 90,
+    "thubnail": "pantalon.png",
+    "id": 2
+  }
+]
