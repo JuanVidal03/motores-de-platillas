@@ -2,7 +2,6 @@
 const express = require('express');
 const app = express();
 const PORT = 8080;
-
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
@@ -10,17 +9,34 @@ app.use(express.urlencoded({extended: true}));
 const Contenedor = require('./Contenedor.js');
 const productos = new Contenedor('productos.json');
 
+// configuración handlebars
+const handlebars = require('express-handlebars');
+const hbs = handlebars.create({
+    extname: '.hbs',
+    defaultLayout: 'index.hbs',
+    layoutDir: __dirname + './views/layouts'
+});
+app.engine('hbs', hbs.engine);
+app.set('view engine', 'hbs');
+app.set('views', './views');
+
+
+
+
 
 
 // accediendo a todos los productos
 app.get('/productos', async(req, res) => {
+    res.render('main');
 
+    /*
     if (await productos.getAll().length === 0) {
         res.send('No hay productos disponibles.')
     } else{
         res.json(await productos.getAll());
         console.log('Productos cargados exitosamente!');
     }
+    */
 });
 
 
