@@ -1,1 +1,21 @@
-<h1>este es el main</h1>
+<h1>Ingrese un nuevo producto</h1>
+
+<form action="/productos" method="post">
+    <div class="mb-3">
+        <input type="text" name="nombre" class="form-control" placeholder="Nombre" required>
+    </div>
+
+    <div class="mb-3">
+        <input type="number" name="precio" class="form-control" placeholder="Precio" required >
+    </div>
+    
+    <div class="mb-3">
+        <input type="url" name="thumbnail" placeholder="URL de la miniatura" class="form-control" required>
+    </div>
+    
+    <input type="submit" value="Añadir Producto" class="btn btn-primary">
+</form>
+
+<div style="width: 100%;" class="d-flex justify-content-center mt-5">
+    <a class="btn btn-primary" role="button" href="/productos">Ver Productos</a>
+</div>

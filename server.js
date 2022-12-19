@@ -22,39 +22,44 @@ app.set('views', './views');
 
 
 
+// metodo que renderiza el main
+app.get('/', (req, res) => {
 
+    try {
+        res.render('main')
+    } catch (error) {
+        res.json({ error: `Ha ocurrido un error: ${res.statusCode}` })
+    }
+});
 
 
 // accediendo a todos los productos
 app.get('/productos', async(req, res) => {
-    res.render('main');
 
-    /*
-    if (await productos.getAll().length === 0) {
-        res.send('No hay productos disponibles.')
-    } else{
-        res.json(await productos.getAll());
-        console.log('Productos cargados exitosamente!');
+    try {
+        const allProducts = await productos.getAll();
+        res.render("productos", { products: allProducts });
+
+    } catch (error) {
+        res.json({error: 'Ha ocurrido un error al subir los productos.'})
     }
-    */
-});
 
+});
 
 
 // añadiendo productos
 app.post('/productos', async(req, res) => {
-    const body = req.body;
 
-    await productos.save(body);
-    res.send('Producto añadido exitosamente!')
-    
-})
+    try {
+        const body = req.body;
+        await productos.save(body);
+        res.redirect('/');
 
+    } catch (error) {
+        res.json({ error: 'Ha ocurrido un error.' })
+    }
 
-
-
-
-
+});
 
 
 // iniciando el server y mapeo de errores
