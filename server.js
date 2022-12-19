@@ -12,8 +12,8 @@ const productos = new Contenedor('productos.json');
 
 // configuración de pug
 const pug = require('pug');
-app.set('view engine', 'pug');
-app.set('views', './views')
+app.set("view engine", "pug");
+app.set("views", "./views");
 
 
 
