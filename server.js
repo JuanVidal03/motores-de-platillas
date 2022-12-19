@@ -10,35 +10,50 @@ app.use(express.urlencoded({extended: true}));
 const Contenedor = require('./Contenedor.js');
 const productos = new Contenedor('productos.json');
 
+// configuracion de ejs
+const ejs = require('ejs');
+app.set('view engine', 'ejs');
+app.set('views', './views');
+
+
+// ruta principal donde esta el formmulario
+app.get('/', (req, res) => {
+
+    try {
+        res.render('./pages/index.ejs');
+
+    } catch (error) {
+        res.json({ error: `Hubo un error: ${error}.` });
+    }
+
+});
 
 
 // accediendo a todos los productos
 app.get('/productos', async(req, res) => {
 
-    if (await productos.getAll().length === 0) {
-        res.send('No hay productos disponibles.')
-    } else{
-        res.json(await productos.getAll());
-        console.log('Productos cargados exitosamente!');
+    try {
+        const allProducts = await productos.getAll();
+        res.render('./pages/productos.ejs', { productos: allProducts});
+    } catch (error) {
+        res.json({ error: `Hubo un error: ${error}.` });
     }
 });
 
 
-
 // añadiendo productos
 app.post('/productos', async(req, res) => {
-    const body = req.body;
 
-    await productos.save(body);
-    res.send('Producto añadido exitosamente!')
-    
-})
+    try {
+        const body = req.body;
+        await productos.save(body);
+        res.redirect('/');
+        
+    } catch (error) {
+        res.json({ error: `Hubo un error: ${error}.` });
+    }
 
-
-
-
-
-
+});
 
 
 // iniciando el server y mapeo de errores

@@ -1,14 +1,26 @@
 [
   {
-    "nombre": "Camibuso",
-    "precio": 75,
-    "thubnail": "Camibuso.png",
+    "nombre": "Kit de Reglas y Escuadras",
+    "precio": 20,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-512.png",
     "id": 1
   },
   {
-    "nombre": "Pantalon",
-    "precio": 90,
-    "thubnail": "pantalon.png",
+    "nombre": "Calculadora",
+    "precio": 15,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-512.png",
     "id": 2
+  },
+  {
+    "nombre": "Micro Escopio",
+    "precio": "56",
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/microscope-lab-science-school-512.png",
+    "id": 3
+  },
+  {
+    "nombre": "Lapiz",
+    "precio": "5",
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/pencil-pen-stationery-school-512.png",
+    "id": 4
   }
 ]
